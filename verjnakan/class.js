@@ -7,66 +7,31 @@ var vorsordArr =[];
 var amenakerArr = [];
 var side = 20;
 // Objectner
-class Grass {
-    constructor(x, y) {
-        this.x = x;
-        this.y = y;
-       this.energy = 8;
-        this.directions = [
-            [this.x - 1, this.y - 1],
-            [this.x, this.y - 1],
-            [this.x + 1, this.y - 1],
-            [this.x - 1, this.y],
-            [this.x + 1, this.y],
-            [this.x - 1, this.y + 1],
-            [this.x, this.y + 1],
-            [this.x + 1, this.y + 1]
-        ];
+class Grass  extends LivingCreature{
+    constructor(x, y){
+        super(x, y);
+        this.energy = 8;
     }
-
-
-
-
-    chooseCell(char) {
-        let result = [];
-
-        for (let i = 0; i < this.directions.length; i++) {
-            let x = this.directions[i][0];
-            let y = this.directions[i][1];
-
-            if ( y < matrix.length && y >= 0 && x < matrix[0].length && x >= 0 ){
-                if (matrix[y][x] == char) {
-                    result.push(this.directions[i]);
-                }
-            }
-
-        }
-
-        return result;
-    }
-
-
-
-
 
 
     mul() {
         this.energy++;
         let found = this.chooseCell(0);
+        
         let exact = random(found)
-
+        
         if (exact && this.energy > 8) {
             let x = exact[0];
             let y = exact[1];
-
+            
             let grass = new Grass(x, y);
             matrix[y][x] = 1;
             grassArr.push(grass);
-
+            
             this.energy =0;
-        } else {
-            console.error('there is no way to multiply');
-        }
+        } //else {
+        //     console.error('there is no way to multiply');
+        // }
     }
 }
 
@@ -75,22 +40,12 @@ class Grass {
 ///////////////////////////////////////////// XOTAKERNER
 
 
-class GrassEater {
-    constructor(x, y) {
-        this.x = x;
-        this.y = y;
+class GrassEater extends LivingCreature{
+    constructor(x, y){
+        super(x, y);
         this.energy = 20;
-        this.directions = [
-            [this.x - 1, this.y - 1],
-            [this.x, this.y - 1],
-            [this.x + 1, this.y - 1],
-            [this.x - 1, this.y],
-            [this.x + 1, this.y],
-            [this.x - 1, this.y + 1],
-            [this.x, this.y + 1],
-            [this.x + 1, this.y + 1]
-        ];
     }
+       
     getNewCordinates(){
               this.directions = [
             [this.x - 1, this.y - 1],
@@ -106,29 +61,11 @@ class GrassEater {
 
 
 
-
-    chooseCell(char) {
-      this.getNewCordinates();
-        let result = [];
-
-        for (let i = 0; i < this.directions.length; i++) {
-            let x = this.directions[i][0];
-            let y = this.directions[i][1];
-
-            if ( y < matrix.length && y >= 0 && x < matrix[0].length && x >= 0 ){
-                if (matrix[y][x] == char) {
-                    result.push(this.directions[i]);
-                }
-            }
-
-        }
-
-        return result;
+    chooseCell(character) {
+        this.getNewCordinates();
+        return super.chooseCell(character);
     }
-
-
-
-
+ 
 
 
 
@@ -243,22 +180,12 @@ class GrassEater {
 
 
 
-class eaterGrassEater {
-    constructor(x, y) {
-        this.x = x;
-        this.y = y;
+class eaterGrassEater  extends LivingCreature{
+    constructor(x, y){
+        super(x, y);
         this.energy = 25;
-        this.directions = [
-            [this.x - 1, this.y - 1],
-            [this.x, this.y - 1],
-            [this.x + 1, this.y - 1],
-            [this.x - 1, this.y],
-            [this.x + 1, this.y],
-            [this.x - 1, this.y + 1],
-            [this.x, this.y + 1],
-            [this.x + 1, this.y + 1]
-        ];
     }
+       
     getNewCordinates(){
               this.directions = [
             [this.x - 1, this.y - 1],
@@ -273,25 +200,10 @@ class eaterGrassEater {
     }
 
 
-    
-    chooseCell(char) {
+    chooseCell(character) {
         this.getNewCordinates();
-          let result = [];
-  
-          for (let i = 0; i < this.directions.length; i++) {
-              let x = this.directions[i][0];
-              let y = this.directions[i][1];
-  
-              if ( y < matrix.length && y >= 0 && x < matrix[0].length && x >= 0 ){
-                  if (matrix[y][x] == char) {
-                      result.push(this.directions[i]);
-                  }
-              }
-  
-          }
-  
-          return result;
-      }
+        return super.chooseCell(character);
+    }
   
 
 
@@ -405,10 +317,9 @@ class eaterGrassEater {
 
 
 
-class Vorsord {
-    constructor(x, y) {
-        this.x = x;
-        this.y = y;
+class Vorsord extends LivingCreature{
+    constructor(x, y){
+        super(x, y);
         this.energy = 40;
         this.directions = [
             [this.x - 1, this.y - 1],
@@ -436,7 +347,9 @@ class Vorsord {
             [this.x - 2, this.y + 1],
             [this.x - 2, this.y]
         ];
-        }
+        
+    }
+        
     getNewCordinates(){
               this.directions = [
                 [this.x - 1, this.y - 1],
@@ -468,24 +381,11 @@ class Vorsord {
 
 
     
-    chooseCell(char) {
+   
+    chooseCell(character) {
         this.getNewCordinates();
-          let result = [];
-  
-          for (let i = 0; i < this.directions.length; i++) {
-              let x = this.directions[i][0];
-              let y = this.directions[i][1];
-  
-              if ( y < matrix.length && y >= 0 && x < matrix[0].length && x >= 0 ){
-                  if (matrix[y][x] == char) {
-                      result.push(this.directions[i]);
-                  }
-              }
-  
-          }
-  
-          return result;
-      }
+        return super.chooseCell(character);
+    }
   
 
 
@@ -598,11 +498,10 @@ class Vorsord {
 
 
 
-class Amenaker {
-    constructor(x, y) {
-        this.x = x;
-        this.y = y;
-        this.energy = 25;
+class Amenaker extends LivingCreature{
+    constructor(x, y){
+        super(x, y);
+        this.energy = 10;
         this.directions = [
             [this.x - 1, this.y - 1],
             [this.x, this.y - 1],
@@ -660,25 +559,10 @@ class Amenaker {
     }
 
 
-    
-    chooseCell(char,char1,char2,char3) {
+    chooseCell(character) {
         this.getNewCordinates();
-          let result = [];
-  
-          for (let i = 0; i < this.directions.length; i++) {
-              let x = this.directions[i][0];
-              let y = this.directions[i][1];
-  
-              if ( y < matrix.length && y >= 0 && x < matrix[0].length && x >= 0 ){
-                  if (matrix[y][x] == char || char1 || char2 ||char3) {
-                      result.push(this.directions[i]);
-                  }
-              }
-  
-          }
-  
-          return result;
-      }
+        return super.chooseCell(character);
+    }
   
 
 
