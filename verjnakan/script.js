@@ -1,70 +1,70 @@
 
-function setup() {
-    function matrixGenerator(matrixSize, grassCount, grassEaterCount,eaterGrassEaterCount, vorsordCount,amenakerCount){
-        for (let i = 0; i < matrixSize; i++) {
-            matrix[i] = []
-            for (let o = 0; o < matrixSize; o++) { 
-                matrix[i][o] = 0;
-            }
-        }
-        for (let i = 0; i < grassCount; i++) {
-            let x = Math.floor(random(matrixSize));
-            let y = Math.floor(random(matrixSize));
-            matrix[y][x] = 1;
-        }
-        for (let i = 0; i < grassEaterCount; i++) {
-            let x = Math.floor(random(matrixSize));
-            let y = Math.floor(random(matrixSize));
-            matrix[y][x] = 2;
-        }
-        for (let i = 0; i < eaterGrassEaterCount; i++) {
-            let x = Math.floor(random(matrixSize));
-            let y = Math.floor(random(matrixSize));
-            matrix[y][x] = 3;
-        }
-        for (let i = 0; i < vorsordCount; i++) {
-            let x = Math.floor(random(matrixSize));
-            let y = Math.floor(random(matrixSize));
-            matrix[y][x] = 4;
-        }
-        for (let i = 0; i < amenakerCount; i++) {
-            let x = Math.floor(random(matrixSize));
-            let y = Math.floor(random(matrixSize));
-            matrix[y][x] = 5;
-        }
-    }
-    matrixGenerator(40, 40, 35, 25, 12, 3)
+// function setup() {
+//     function matrixGenerator(matrixSize, grassCount, grassEaterCount,eaterGrassEaterCount, vorsordCount,amenakerCount){
+//         for (let i = 0; i < matrixSize; i++) {
+//             matrix[i] = []
+//             for (let o = 0; o < matrixSize; o++) { 
+//                 matrix[i][o] = 0;
+//             }
+//         }
+//         for (let i = 0; i < grassCount; i++) {
+//             let x = Math.floor(random(matrixSize));
+//             let y = Math.floor(random(matrixSize));
+//             matrix[y][x] = 1;
+//         }
+//         for (let i = 0; i < grassEaterCount; i++) {
+//             let x = Math.floor(random(matrixSize));
+//             let y = Math.floor(random(matrixSize));
+//             matrix[y][x] = 2;
+//         }
+//         for (let i = 0; i < eaterGrassEaterCount; i++) {
+//             let x = Math.floor(random(matrixSize));
+//             let y = Math.floor(random(matrixSize));
+//             matrix[y][x] = 3;
+//         }
+//         for (let i = 0; i < vorsordCount; i++) {
+//             let x = Math.floor(random(matrixSize));
+//             let y = Math.floor(random(matrixSize));
+//             matrix[y][x] = 4;
+//         }
+//         for (let i = 0; i < amenakerCount; i++) {
+//             let x = Math.floor(random(matrixSize));
+//             let y = Math.floor(random(matrixSize));
+//             matrix[y][x] = 5;
+//         }
+//     }
+//     matrixGenerator(40, 40, 35, 25, 12, 3)
     
     frameRate(3);
     createCanvas(matrix[0].length * side, matrix.length * side);
     background('#acacac');
 
-    for (let y = 0; y < matrix.length; y++) {
-        for (let x = 0; x < matrix[y].length; x++) {
+//     for (let y = 0; y < matrix.length; y++) {
+//         for (let x = 0; x < matrix[y].length; x++) {
             
-            if (matrix[y][x] == 1){
-                let gr = new Grass(x, y);
-                grassArr.push(gr);
-            }
-            else if (matrix[y][x] == 2){
-                let eater = new GrassEater(x, y);
-                grassEaterArr.push(eater);
-            }
-            else if (matrix[y][x] == 3){
-                let eater1 = new eaterGrassEater(x, y);
-                grassEaterArr.push(eater1);
-            }
-            else if (matrix[y][x] == 4){
-                let eater2 = new Vorsord(x, y);
-                vorsordArr.push(eater2);
-            }
-            else if (matrix[y][x] == 5){
-                let eater3 = new Amenaker(x, y);
-                amenakerArr.push(eater3);
-            }
-        }
-    }
-}
+//             if (matrix[y][x] == 1){
+//                 let gr = new Grass(x, y);
+//                 grassArr.push(gr);
+//             }
+//             else if (matrix[y][x] == 2){
+//                 let eater = new GrassEater(x, y);
+//                 grassEaterArr.push(eater);
+//             }
+//             else if (matrix[y][x] == 3){
+//                 let eater1 = new eaterGrassEater(x, y);
+//                 grassEaterArr.push(eater1);
+//             }
+//             else if (matrix[y][x] == 4){
+//                 let eater2 = new Vorsord(x, y);
+//                 vorsordArr.push(eater2);
+//             }
+//             else if (matrix[y][x] == 5){
+//                 let eater3 = new Amenaker(x, y);
+//                 amenakerArr.push(eater3);
+//             }
+//         }
+//     }
+// }
 
 function draw() {
 

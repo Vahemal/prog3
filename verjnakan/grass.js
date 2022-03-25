@@ -1,12 +1,7 @@
-var matrix = [];
-var grassArr = [];
-var grassEaterArr = [];
-var eaterGrassEaterArr = [];
-var vorsordArr =[];
-var amenakerArr = [];
-var side = 20;
 
-class Grass  extends LivingCreature{
+let LivingCreature = require('./LivingCreature')
+
+module.exports = class Grass  extends LivingCreature{
     constructor(x, y){
         super(x, y);
         this.energy = 8;
