@@ -1,41 +1,17 @@
 
+var socket =io();
+side = 20;
+
+function setup(){
   frameRate(3);
-  createCanvas(matrix[0].length * side, matrix.length * side);
+  createCanvas(50 * side, 50* side);
   background('#acacac');
+}
 
-  for (let y = 0; y < matrix.length; y++) {
-      for (let x = 0; x < matrix[y].length; x++) {
-          
-          if (matrix[y][x] == 1){
-              let gr = new Grass(x, y);
-              grassArr.push(gr);
-          }
-          else if (matrix[y][x] == 2){
-              let eater = new GrassEater(x, y);
-              grassEaterArr.push(eater);
-          }
-          else if (matrix[y][x] == 3){
-              let eater1 = new eaterGrassEater(x, y);
-              grassEaterArr.push(eater1);
-          }
-          else if (matrix[y][x] == 4){
-              let eater2 = new Vorsord(x, y);
-              vorsordArr.push(eater2);
-          }
-          else if (matrix[y][x] == 5){
-              let eater3 = new Amenaker(x, y);
-              amenakerArr.push(eater3);
-
-          }
-          else if (matrix[y][x] == 6){
-            let eater4 = new gishatich(x, y);
-            gishatichArr.push(eater4);
-        }
-      }
-  }
+ 
 
 
-function draw() {
+function nkarel(matrix) {
 
   for (var y = 0; y < matrix.length; y++) {
       for (var x = 0; x < matrix[y].length; x++) {
@@ -66,3 +42,4 @@ function draw() {
       }
   }
 }
+socket.on('send matrix', nkarel);

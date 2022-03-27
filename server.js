@@ -4,28 +4,22 @@ var server = require('http').createServer(app);
 var io = require('socket.io')(server);
 var fs = require("fs");
 
-app.use(express.static("verjnakan"));
+app.use(express.static("."));
 
 app.get('/', function (req, res) {
     res.redirect('index.html');
 });
-server.listen(3000);
+server.listen(3005);
 
-var matrix = [];
-var grassArr = [];
-var grassEaterArr = [];
-var eaterGrassEaterArr = [];
-var vorsordArr =[];
-var amenakerArr = [];
-var gishatichArr =[];
-var side = 20;
- 
- grass = require('./verjnakan/grass')
- grassEater = require('./verjnakan/grassEater')
- eaterGrassEater = require('./verjnakan/eaterGrassEater')
- vorsord = require('./verjnakan/Vorsord')
- amenaker = require('./verjnakan/amenaker')
-gishatich = require('./verjnakan/gishatich')
+matrix = [];
+ grassArr = [];
+ grassEaterArr = [];
+ eaterGrassEaterArr = [];
+ vorsordArr =[];
+ amenakerArr = []; 
+ gishatichArr =[];
+side = 20;
+
 
   function matrixGenerator(matrixSize, grassCount, grassEaterCount,eaterGrassEaterCount, vorsordCount,amenakerCount, amenakeGishatich){
       for (let i = 0; i < matrixSize; i++) {
@@ -70,7 +64,18 @@ gishatich = require('./verjnakan/gishatich')
 
   io.sockets.emit('send matrix', matrix)
 
-  function createObject(matrix){
+
+
+ 
+ Grass = require('./grass')
+ GrassEater = require('./grassEater')
+ eaterGrassEater = require('./eaterGrassEater')
+ Vorsord = require('./Vorsord')
+ Amenaker = require('./amenaker')
+gishatich = require('./gishatich')
+
+
+  function createObject(){
     for (let y = 0; y < matrix.length; y++) {
     for (let x = 0; x < matrix[y].length; x++) {
         
@@ -106,28 +111,22 @@ gishatich = require('./verjnakan/gishatich')
 
 function game(){
     for (let i = 0; i < grassArr.length; i++) {
-      const grass = grassArr[i];
-      grass.mul();
+      grassArr[i].mul();//
     }
     for (let i = 0; i < grassEaterArr.length; i++) {
-      const eater = grassEaterArr[i];
-      eater.eat();
+      grassEaterArr[i].eat();
     }
     for (let i = 0; i <eaterGrassEaterArr.length; i++) {
-      const eater1 = eaterGrassEaterArr[i];
-      eater1.eat();
+      eaterGrassEaterArr[i].eat();
     }
     for (let i = 0; i <vorsordArr.length; i++) {
-      const eater2 = vorsordArr[i];
-      eater2.eat();
+       vorsordArr[i].eat();
     }
     for (let i = 0; i <amenakerArr.length; i++) {
-      const eater3 =amenakerArr[i];
-      eater3.eat();
+      amenakerArr[i].eat();//
     }
     for (let i = 0; i <gishatichArr.length; i++) {
-        const eater4 =gishatichArr[i];
-        eater4.eat();
+        gishatichArr[i].eat();
       }
     io.sockets.emit("send matrix", matrix);
  }
@@ -135,5 +134,5 @@ setInterval(game, 1000)
 
 
 io.on('connection', function (socket) {
-  createObject(matrix)
+  createObject()
 })
