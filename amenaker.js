@@ -103,16 +103,16 @@ module.exports = class Amenaker extends LivingCreature{
 
     
     eat(){
-        let found = this.chooseCell(2,3,4);
+        let found = this.chooseCell(6);
         let exact =  found[Math.floor(Math.random()* found.length)];
         if (exact){
             
             let x = exact[0];
             let y = exact[1];
 
-            for (let i = 0; i <amenakerArr.length; i++) {
-                if( amenakerArr[i].x == x && amenakerArr[i].y == y ){
-                    amenakerArr.splice(i, 1)
+            for (let i = 0; i < gishatichArr.length; i++) {
+                if( gishatichArr[i].x == x && gishatichArr[i].y == y ){
+                    gishatichArr.splice(i, 1)
                 }
             }
 

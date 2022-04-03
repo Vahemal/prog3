@@ -108,16 +108,16 @@ module.exports =class Vorsord extends LivingCreature{
 
     
     eat(){
-        let found = this.chooseCell(2);
+        let found = this.chooseCell(3);
         let exact =  found[Math.floor(Math.random()* found.length)];  
               if (exact){
             
             let x = exact[0];
             let y = exact[1];
 
-            for (let i = 0; i <vorsordArr.length; i++) {
-                if( vorsordArr[i].x == x && vorsordArr[i].y == y ){
-                    vorsordArr.splice(i, 1)
+            for (let i = 0; i < eaterGrassEaterArr.length; i++) {
+                if( eaterGrassEaterArr[i].x == x && eaterGrassEaterArr[i].y == y ){
+                    eaterGrassEaterArr.splice(i, 1)
                 }
             }
 

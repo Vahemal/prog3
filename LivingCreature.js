@@ -26,7 +26,7 @@ module.exports = class LivingCreature {
             let y = this.directions[i][1];
 
             if ( y < matrix.length && y >= 0 && x < matrix[0].length && x >= 0 ){
-                if (matrix[y][x] == char) {
+                if (matrix[y][x] == char  ) {
                     result.push(this.directions[i]);
                 }
             }

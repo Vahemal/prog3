@@ -1,7 +1,7 @@
 
 let LivingCreature = require('./LivingCreature')
 
-module.exports = class gishatich  extends LivingCreature{
+module.exports = class Gishatich  extends LivingCreature{
     constructor(x, y){
         super(x, y);
         this.energy = 20;
@@ -60,16 +60,16 @@ move(){
 
 
 eat(){
-    let found = this.chooseCell(2,3,6);
+    let found = this.chooseCell(4);
     let exact =  found[Math.floor(Math.random()* found.length)];
     if (exact){
         this.energy +=2;
         let x = exact[0];
         let y = exact[1];
 
-        for (let i = 0; i < gishatichArr.length; i++) {
-            if( gishatich[i].x == x && gishatichArr[i].y == y ){
-                gishatichArr.splice(i, 1)
+        for (let i = 0; i < vorsordArr.length; i++) {
+            if( vorsordArr[i].x == x && vorsordArr[i].y == y ){
+                vorsordArr.splice(i, 1)
             }
         }
 
@@ -96,10 +96,10 @@ mul() {
     if (exact && this.energy > 20) {
         let x = exact[0];
         let y = exact[1];
-
-        let eater4 = new gishatich(x, y);
         matrix[y][x] = 6;
-        amenakerArr.push(eater4);
+        let gishatich = new Gishatich(x, y);
+        
+        gishatichArr.push(gishatich);
 
         this.energy = 20;
     } 
@@ -113,7 +113,7 @@ mul() {
 
 die(){
     for (let i = 0; i <gishatichArr.length; i++) {
-        if( gshatichArr[i].x == this.x && gishatichArr[i].y == this.y ){
+        if( gishatichArr[i].x == this.x && gishatichArr[i].y == this.y ){
             gishatichArr.splice(i, 1)
         }
     }

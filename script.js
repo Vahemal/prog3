@@ -55,3 +55,15 @@ function addGrass() {
 function addGrassEater() {
     socket.emit("add grassEater")
 }
+function addeaterGrassEater() {
+    socket.emit("add eaterGrassEater")
+}
+function addVorsord() {
+    socket.emit("add Vorsord")
+}
+function addamenaker() {
+    socket.emit("add amenaker")
+}
+function addgishatich() {
+    socket.emit("add gishatich")
+}
