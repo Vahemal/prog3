@@ -3,8 +3,8 @@ var socket =io();
 side = 20;
 
 function setup(){
-  frameRate(3);
-  createCanvas(50 * side, 50* side);
+//   frameRate(3);
+  createCanvas(40 * side, 40* side);
   background('#acacac');
 }
 
@@ -43,3 +43,15 @@ function nkarel(matrix) {
   }
 }
 socket.on('send matrix', nkarel);
+
+
+
+function kill() {
+    socket.emit("kill")
+}
+function addGrass() {
+    socket.emit("add grass")
+}
+function addGrassEater() {
+    socket.emit("add grassEater")
+}

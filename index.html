@@ -9,6 +9,46 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.14/p5.js"></script>
    
     <script src="script.js"></script>
+    <style>
+        button {
+          display: inline-block;
+          background-color: #0d472e;
+          border-radius: 10px;
+          border: 4px double #cccccc;
+          color: #eeeeee;
+          text-align: center;
+          font-size: 17px;
+          padding: 20px;
+          width: 200px;
+          transition: all 0.5s;
+          cursor: pointer;
+          margin: 5px;
+        }
+        button span {
+          cursor: pointer;
+          display: inline-block;
+          position: relative;
+          transition: 0.5s;
+        }
+        button span:after {
+          content: '\00bb';
+          position: absolute;
+          opacity: 0;
+          top: 0;
+          right: -20px;
+          transition: 0.5s;
+        }
+        button:hover {
+          background-color: #010302;
+        }
+        button:hover span {
+          padding-right: 25px;
+        }
+        button:hover span:after {
+          opacity: 1;
+          right: 0;
+        }
+      </style>
 </head>
 
 <body>
@@ -19,7 +59,18 @@
     որսորդ <div style="background-color:orange; width:15px; height:15px"></div>
     ամենակեր <div style="background-color:red; width:15px; height:15px"></div>
     գիշատիչ <div style="background-color:black; width:15px; height:15px"></div>
-    <br><br>
+    <br>
+    <div class="tools">
+        <h1 style="color:rgb(112, 96, 23)">Events</h1>
+        <span>
+                <button onclick="kill()">Kill them all</button>
+          
+                <button onclick="addGrass()">Add grass </button>
+            
+                <button onclick="addGrassEater()">Add grass eater</button>
+              </span>
+           
+            </div>
 </body>
 
 </html>

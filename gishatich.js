@@ -26,21 +26,29 @@ module.exports = class gishatich  extends LivingCreature{
         return super.chooseCell(character);
     }
   
-mul() {
+move(){
     let found = this.chooseCell(0);
-    let exact =  Math.floor(Math.random()* found.length);
-
-    if (exact && this.energy > 20) {
+    let exact =  found[Math.floor(Math.random()* found.length)];
+        if (exact){
         let x = exact[0];
         let y = exact[1];
 
-        let eater4 = new gishatich(x, y);
-        matrix[y][x] = 6;
-        amenakerArr.push(eater4);
+        matrix[y][x] = 6
+        matrix[this.y][this.x] = 0
 
-        this.energy = 8;
-    } else {
-        console.error('there is no way to multiply');
+        this.x = x;
+        this.y = y;
+
+        this.energy--
+
+        if(this.energy < 0){
+            this.die()
+        }
+    }else {
+        this.energy--
+        if(this.energy < 0){
+            this.die()
+        }
     }
 }
 
@@ -49,10 +57,11 @@ mul() {
 
 
 
+
+
 eat(){
     let found = this.chooseCell(2,3,6);
-    let exact = Math.floor(Math.random()* found.length);
-
+    let exact =  found[Math.floor(Math.random()* found.length)];
     if (exact){
         this.energy +=2;
         let x = exact[0];
@@ -81,35 +90,24 @@ eat(){
 
 
 
-
-
-
-
-move(){
+mul() {
     let found = this.chooseCell(0);
-    let exact =  Math.floor(Math.random()* found.length);
-    if (exact){
+    let exact =  found[Math.floor(Math.random()* found.length)];
+    if (exact && this.energy > 20) {
         let x = exact[0];
         let y = exact[1];
 
-        matrix[y][x] = 6
-        matrix[this.y][this.x] = 0
+        let eater4 = new gishatich(x, y);
+        matrix[y][x] = 6;
+        amenakerArr.push(eater4);
 
-        this.x = x;
-        this.y = y;
-
-        this.energy--
-
-        if(this.energy < 0){
-            this.die()
-        }
-    }else {
-        this.energy--
-        if(this.energy < 0){
-            this.die()
-        }
-    }
+        this.energy = 20;
+    } 
 }
+
+
+
+
 
 
 
